@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>注册页面</title> 
+<script type="text/javascript" src="2.php?id=注册页面"></script>
+<style>
+ul.guaid {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}/*导航栏*/
+li{
+    float: left;
+}/*左浮动*/
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+}/*导航栏元素属性*/
+li a:hover {
+    background-color: #111;
+}/*鼠标放上变色*/
+.active {
+    background-color: #06b9f0;
+}/*目前所处位置变色*/
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 0px 25%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}/*输入框*/
+
+input[type=submit] {
+  text-align:center;
+  width: 30%;
+  background-color: #06b9f0;
+  color: white;
+  padding: 16px 20px;
+  margin: 20px 35%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}/*按钮*/
+
+input[type=submit]:hover {
+  background-color:rgb(17, 207, 198);
+}/*鼠标按钮变色*/
+
+div.log{
+  width: 50%;
+  position:relative;
+  left: 25%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}/*边框*/
+.center{
+    text-align: center;
+}/*居中*/
+.lqua{
+    position: relative;
+    left: 25%;
+}/*向左对齐25%*/
+.rqua{
+    position: absolute;
+    right: 10px;
+    top: 280px;
+}/*登入页面链接位置*/
+a.one:link{color: #333;text-decoration-line: none;}
+a.one:visited{color: #333;text-decoration-line: none;}
+a.one:hover{color: #06b9f0; text-decoration:underline;}
+</style>
+</head>
+<body>
+<ul class="guaid">s
+    <li ><a href="index.html">主页</a></li>
+    <li ><a class="active" href="denglu.html">登录注册</a></li>
+    <li ><a href="表格.html">关于我们</a></li>
+</ul><!--导航表-->
+<h1 class="center">欢迎注册天易查网站</h1>
+
+<div class="log">
+    <form>
+    <p class="lqua">账号</p>
+    <input type="text" id="fname" name="firstname" placeholder="请输入账号">
+
+    <p class="lqua">密码</p>
+    <input type="text" id="lname" name="lastname" placeholder="请输入账号密码">
+
+    <input type="submit" value="注册">
+    </form>
+    <p class="rqua"><a class="one" href="登入界面.html">已有账号？点击这里登录</a></p>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>主页面</title> 
+<style>
+ul.guaid {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}/*导航栏*/
+li a {
+    display: block;
+    color: white;
+    float: left;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+}/*导航栏元素属性*/
+li p{
+  display: block;
+  color: white;
+  float: right;
+  text-align: center;
+  padding-right: 80px;
+  text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}/*鼠标放上变色*/
+.active {
+    background-color:  #06b9f0;
+}/*目前所处位置变色*/
+
+.column1 {
+  float: left;
+  width: 15%;
+}
+.column2 {
+  float: left;
+  width: 70%;
+  background-color: #f2f2f2;
+}
+.column2 input[type=text] {
+  width: 30%;
+  padding: 6px;
+  margin: auto;
+  font-size: 17px;
+  text-align: center;
+  position: relative;
+  left: 35%;
+}/*搜索框*/
+
+.column2 input[type=submit] {
+  text-align:center;
+  width: 50px;
+  background-color: #06b9f0;
+  color: white;
+  padding: 10px 10px;
+  margin: 1px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  right: 28%;
+}/*按钮*/
+
+.column2 input[type=submit]:hover {
+  background-color:rgb(17, 207, 198);
+}/*鼠标按钮变色*/
+
+div.sevendaysimg {
+    margin: 15px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 450px;
+    position: relative;
+    left: 16%;
+}
+
+div.sevendaysimg:hover {
+    border: 1px solid #777;
+}
+
+div.sevendaysimg img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}/*七日天气图片*/
+
+div.cityw{
+  margin: 50px 20px;
+  border: #333;
+  width: 500px;
+  height: 450px;
+  float: left;
+  position: relative;
+  left: 10%;
+  background-image: url(img/sky.jpeg);
+  background-repeat: no-repeat;
+}
+div.cityd{
+  margin: 50px 10px;
+  border: #333;
+  width: 200px;
+  height: 450px;
+  float: left;
+  position: relative;
+  left: 10%;
+  background-image: url(img/888.jpeg);
+
+}/*天气查询图框*/
+div.cw1{
+  width: 100%;
+  height: 30%;
+  padding: 10px 15px;
+}
+.cw1 p{
+  font-size: 50px;
+}
+div.cw2{
+  width: auto;
+  height:33.3%;
+  font-size: 50px;
+  padding: 10px 100px;
+}
+div.cw3{
+  width: 100%;
+  font-size: 20px;
+  height: 33.3%;
+  padding: 10% 20%;
+}/*天气栏内容*/
+
+div.cd1{
+width:auto;
+height: 20%;
+text-align: center;
+}
+div.cd2{
+width: auto;
+height: 20%;
+text-align: center;
+}
+div.cd3{
+width:auto;
+height: 20%;
+text-align: center;
+}
+div.cd4{
+width: auto;
+height: 40%;
+text-align: center;
+}/*白日夜晚天气内容*/
+
+/* 列后清除浮动 */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+ 
+/* 响应式布局 - 小于 600 px 时改为上下布局 */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.column2 h2{
+    text-align: center;
+}
+
+</style>
+</head>
+<body>
+<ul class="guaid">
+<li ><a class="active" href="index.html">主页</a></li>
+<li ><a href="denglu.html">登录注册</a></li>
+<li ><a href="表格.html">关于我们</a></li>
+<li><p><?php echo date("Y年m月d日") ?></p></li>
+</ul>
+<div class="row">
+    <div class="column1">
+    <img src="img\44.jpg">
+    </div>
+    
+    <div class="column2">
+    <h2>天易查天气查询网站</h2>
+    <form action="inquire.php" method="post">
+    <input type="text" placeholder="请输入城市名查询天气" name="cname">
+    <input type="submit" value="确定"></form><br>
+    <div class="cityw">
+      <div class="cw1"><p>
+        <?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo $row['city'];
+        ?></p></div>
+      <div class="cw2"><p>
+        <?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo $row['condition'];
+        echo"\n";
+        echo $row['temp'];
+        echo"℃";
+        ?></p></div>
+      <div class="cw3"><p>
+        <?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo"风向：";
+        echo $row['wind'];
+        echo"<br>";
+        echo"风力：";
+        echo $row['wind_class'];
+        ?></p></div>
+    </div><!--当前天气图-->
+    
+    <div class="cityd">
+      <div class="cd1"><p><?php echo date("d") ?>日白天</p></div>
+      <div class="cd2"><p><?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo $row['condition'];
+        ?></p></div>
+      <div class="cd3"><p><?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo $row['temp'];
+        echo"℃";
+        ?></p></div>
+      <div class="cd4"><p><?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo"风向：";
+        echo $row['wind'];
+        echo"<br>";
+        echo"风力：";
+        echo $row['wind_class'];
+        ?></p></div>
+    </div><!--白天气温图-->
+    
+    <div class="cityd">
+      <div class="cd1"><p><?php echo date("d") ?>日夜晚</p></div>
+      <div class="cd2"><p><?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo $row['condition_night'];
+        ?></p></div>
+      <div class="cd3"><p><?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo $row['temp_night'];
+        echo"℃";
+        ?></p></div>
+      <div class="cd4"><p><?php
+        include"lianjie.php";
+        $result=$dbh->query("select * from day0 where city='武汉'");
+        $row=$result->fetch();
+        echo"风向：";
+        echo $row['wind_night'];
+        echo"<br>";
+        echo"风力：";
+        echo $row['wind_class_nigh'];
+        ?></p></div>
+    </div><!--晚上气温图-->
+
+    <div>
+      <div class="sevendaysimg">
+        <a target="_blank" href="img\0温度最低的十个城市.jpg">
+          <img src="img\0温度最低的十个城市.jpg" alt="图片文本描述" width="700" height="400">
+        </a>
+        <div class="desc">全国温度最低的十个城市</div>
+      </div>
+    </div><!--最低气温图-->
+    <div>
+      <div class="sevendaysimg">
+        <a target="_blank" href="img\0温度最高的十个城市.jpg">
+          <img src="img\0温度最高的十个城市.jpg" alt="图片文本描述" width="700" height="400">
+        </a>
+        <div class="desc">全国温度最高的十个城市</div>
+      </div>
+    </div><!--最高气温图-->
+      <p></p>
+    </div>
+    
+    <div class="column1">
+      <p></p>
+    </div>
+  </div>
+
+</body>
+</html>
